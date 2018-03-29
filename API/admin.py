@@ -9,27 +9,41 @@ from .forms import StairForm
 class StairAdmin(admin.ModelAdmin):
 
     form = StairForm
-    fields = ('title',
-              ('min_height', 'max_height'),
-              'height',
-              'step_height',
-              ('min_marsh', 'max_marsh'),
-              'marsh',
-              'step_marsh',
-              'type_turn',
-              ('min_width_step', 'max_width_step'),
-              'width_step',
-              ('min_width_top_step', 'max_width_top_step'),
-              'width_top_step',
-              'visible_first_marsh',
-              'visible_invitation_step',
-              'type_fence',
-              'visible_riser',
-              'type_track_support',
-              'material_stair',
-              'tint',
-              'patina',
-              'brush')
+    fieldsets = (
+        (None, {
+            'fields': ('title',)
+        }),
+        ('Высота лестницы', {
+            'fields': (('min_height', 'max_height', 'step_height',), 'height')
+        }),
+        ('Ширина марша', {
+            'fields': (('min_marsh', 'max_marsh', 'step_marsh'), 'marsh')
+        }),
+        ('Какие типы поворотов доступны', {
+            'fields': ('type_turn',)
+        }),
+        ('Ширина ступеней', {
+            'fields': (('min_width_step', 'max_width_step', 'step_width_step'), 'width_step',)
+        }),
+        ('Ширина верхней ступени', {
+            'fields': (('min_width_top_step', 'max_width_top_step', 'step_width_top_step'), 'width_top_step',)
+        }),
+        ('Какие типы ограждений доступны', {
+            'fields': ('type_fence',)
+        }),
+        ('Какие типы пристенного профиля доступны', {
+            'fields': ('type_track_support',)
+        }),
+        ('Какие типы отделки доступны', {
+            'fields': ('tint',)
+        }),
+        ('Какие материалы доступны', {
+            'fields': ('material_stair',)
+        }),
+        ('Какие дополнительные элементы доступны', {
+            'fields': ('visible_first_marsh', 'visible_invitation_step', 'visible_riser', 'patina', 'brush')
+        }),
+    )
 
     formfield_overrides = {
         models.ManyToManyField: {'widget': forms.CheckboxSelectMultiple},
