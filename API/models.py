@@ -23,7 +23,7 @@ class Range(models.Model):
 
     # класс-родитель для всех полей с диапазонами,
     # для создания диапазона достаточно отнаследоваться от этого класса
-    title = models.CharField(max_length=16)
+    # и создать в admin.py форму для модели, указав родителем класс SliderInline
     min = models.PositiveIntegerField(default=0)
     slider = SliderField()
     max = models.PositiveIntegerField(default=10000)
