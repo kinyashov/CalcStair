@@ -1,9 +1,9 @@
-<div id="{{ name_slider }}" class="slider"></div>
+<div id="{{ slider_name }}" class="slider"></div>
 
 {% block admin_change_form_document_ready %}
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function() {
-        var slider = document.getElementById('{{ name_slider }}');
+        var slider = document.getElementById('{{ slider_name }}');
         var minInput = document.getElementById('id_{{ min_slider_input }}');
         var maxInput = document.getElementById('id_{{ max_slider_input }}');
 
