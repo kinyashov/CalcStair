@@ -8,19 +8,25 @@ from .models import (
 )
 
 
-class HeightRangeInline(admin.TabularInline):
+class SliderInline(admin.TabularInline):
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+class HeightRangeInline(SliderInline):
     model = HeightRange
 
 
-class WidthMarshInline(admin.TabularInline):
+class WidthMarshInline(SliderInline):
     model = WidthMarsh
 
 
-class MinWidthStepInline(admin.TabularInline):
+class MinWidthStepInline(SliderInline):
     model = MinWidthStep
 
 
-class MinWidthTopStepInline(admin.TabularInline):
+class MinWidthTopStepInline(SliderInline):
     model = MinWidthTopStep
 
 
