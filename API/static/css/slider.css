@@ -1,6 +1,6 @@
 .slider {
     display: inline-block;
-    width: 348px;
+    min-width: 348px;
 }
 
 .form-row {

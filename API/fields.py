@@ -10,6 +10,7 @@ class SliderField(NullBooleanField):
     def id_html_elements(self):
         model_name = self.model._meta.model_name
         slider_name = f"id_{model_name}"
+        # TODO: получать значение pk
         min_input = f"{model_name}-0-min"
         max_input = f"{model_name}-0-max"
         return slider_name, min_input, max_input
