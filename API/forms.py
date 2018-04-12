@@ -17,5 +17,5 @@ class SliderFormField(Field):
             if k in LIST_OF_HTML_ELEMENTS:
                 for_widget[k] = kwargs[k]
                 del kwargs[k]
-        self.widget = RangeSliderWidget(name_html_elements=for_widget)
+        self.widget = RangeSliderWidget(id_html_elements=for_widget)
         super(SliderFormField, self).__init__(**kwargs)
