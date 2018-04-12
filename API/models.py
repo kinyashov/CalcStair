@@ -20,6 +20,9 @@ class Stair(models.Model):
 
 
 class Range(models.Model):
+
+    # класс-родитель для всех полей с диапазонами,
+    # для создания диапазона достаточно отнаследоваться от этого класса
     title = models.CharField(max_length=16)
     min = models.PositiveIntegerField(default=0)
     slider = SliderField()
@@ -33,17 +36,33 @@ class Range(models.Model):
 class HeightRange(Range):
     stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Высота лестницы'
+        verbose_name_plural = 'Высота лестницы'
+
 
 class WidthMarsh(Range):
     stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Ширина марша'
+        verbose_name_plural = 'Ширина марша'
 
 
 class MinWidthStep(Range):
     stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Минимальная ширина ступени'
+        verbose_name_plural = 'Минимальная ширина ступени'
+
 
 class MinWidthTopStep(Range):
     stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Минимальная ширина верхней ступени'
+        verbose_name_plural = 'Минимальная ширина верхней ступени'
 
 
 class Turn(models.Model):
