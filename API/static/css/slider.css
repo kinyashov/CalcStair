@@ -1,12 +1,37 @@
 .slider {
     display: inline-block;
-    min-width: 348px;
+    width: 90%;
+    padding: auto;
+    margin: auto;
+}
+
+.field-slider {
+    min-width: 400px;
+}
+
+.inline-related.tabular fieldset.module table {
+    width: 200px;
 }
 
 .form-row {
-    height: auto;
+    border-bottom: none;
 }
 
-.multiple-choice-field {
-    height: auto;
+thead th {
+    background: #fff;
+}
+
+thead th,
+tfoot td {
+    border-top: none;
+    border-bottom: none;
+}
+
+tfoot td {
+    border-bottom: none;
+    border-top: none;
+}
+
+td, th {
+    border-bottom: none;
 }
