@@ -24,16 +24,16 @@ class Range(models.Model):
     # класс-родитель для всех полей с диапазонами,
     # для создания диапазона достаточно отнаследоваться от этого класса
     # и создать в admin.py форму для модели, указав родителем класс SliderInline
-    min = models.PositiveIntegerField(default=0)
-    slider = SliderField()
-    max = models.PositiveIntegerField(default=10000)
-    step = models.PositiveSmallIntegerField()
+    min = models.PositiveIntegerField(default=0, verbose_name='минимальное значение')
+    slider = SliderField(verbose_name='')
+    max = models.PositiveIntegerField(default=10000, verbose_name='максимальное значение')
+    step = models.PositiveSmallIntegerField(default=5, verbose_name='шаг диапазона')
 
     class Meta:
         abstract = True
 
 
-class HeightRange(Range):
+class Height(Range):
     stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
 
     class Meta:
