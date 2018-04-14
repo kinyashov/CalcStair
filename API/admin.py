@@ -4,18 +4,16 @@ from django import forms
 
 from .models import (
     Stair, Turn, Fence, TrackSupport, Material, Tint,
-    HeightRange, WidthMarsh, MinWidthStep, MinWidthTopStep
+    Height, WidthMarsh, MinWidthStep, MinWidthTopStep
 )
 
 
 class SliderInline(admin.TabularInline):
-
-    def has_delete_permission(self, request, obj=None):
-        return False
+    can_delete = False
 
 
 class HeightRangeInline(SliderInline):
-    model = HeightRange
+    model = Height
 
 
 class WidthMarshInline(SliderInline):
@@ -45,7 +43,7 @@ admin.site.register(Fence)
 admin.site.register(TrackSupport)
 admin.site.register(Material)
 admin.site.register(Tint)
-admin.site.register(HeightRange)
+admin.site.register(Height)
 admin.site.register(WidthMarsh)
 admin.site.register(MinWidthStep)
 admin.site.register(MinWidthTopStep)
