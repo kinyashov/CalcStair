@@ -10,6 +10,7 @@ from .models import (
 
 class SliderInline(admin.TabularInline):
     can_delete = False
+    template = 'admin/tabular.html'
 
 
 class HeightRangeInline(SliderInline):
