@@ -34,7 +34,7 @@ class Range(models.Model):
 
 
 class Height(Range):
-    stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
+    stair = models.OneToOneField('Stair', on_delete=models.CASCADE, related_name='height')
 
     class Meta:
         verbose_name = 'Высота лестницы'
@@ -42,7 +42,7 @@ class Height(Range):
 
 
 class WidthMarsh(Range):
-    stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
+    stair = models.OneToOneField('Stair', on_delete=models.CASCADE, related_name='width_marsh')
 
     class Meta:
         verbose_name = 'Ширина марша'
@@ -50,7 +50,7 @@ class WidthMarsh(Range):
 
 
 class MinWidthStep(Range):
-    stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
+    stair = models.OneToOneField('Stair', on_delete=models.CASCADE, related_name='min_width_step')
 
     class Meta:
         verbose_name = 'Минимальная ширина ступени'
@@ -58,7 +58,7 @@ class MinWidthStep(Range):
 
 
 class MinWidthTopStep(Range):
-    stair = models.OneToOneField('Stair', on_delete=models.CASCADE)
+    stair = models.OneToOneField('Stair', on_delete=models.CASCADE, related_name='min_width_top_step')
 
     class Meta:
         verbose_name = 'Минимальная ширина верхней ступени'

@@ -1844,7 +1844,7 @@ function scope ( target, options, originalOptions ){
 				scope_Events[targetEvent].forEach(function( callback ) {
 
 					callback.call(
-						// Use the slider public API as the scope ('this')
+						// Use the slider public stair as the scope ('this')
 						scope_Self,
 						// Return values as array, so arg_1[arg_2] is always valid.
 						scope_Values.map(options.format.to),

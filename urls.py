@@ -1,4 +1,4 @@
-"""StairCalc URL Configuration
+"""stair URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -20,5 +20,5 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^', include('API.urls')),
+    url(r'^', include('stair.urls')),
 ]
