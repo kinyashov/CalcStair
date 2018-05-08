@@ -1,4 +1,4 @@
-from django.forms.fields import Field
+from django.forms import models, fields
 
 from .widgets import RangeSliderWidget
 
@@ -6,7 +6,7 @@ from .widgets import RangeSliderWidget
 LIST_OF_HTML_ELEMENTS = ['slider_name', 'min_input', 'max_input']
 
 
-class SliderFormField(Field):
+class SliderFormField(fields.Field):
 
     def __init__(self, **kwargs):
 
