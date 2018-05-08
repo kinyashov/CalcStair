@@ -2,10 +2,8 @@ from django.contrib import admin
 from django.db import models
 from django import forms
 
-from .models import (
-    Stair, Turn, Fence, TrackSupport, Material, Tint,
-    Height, WidthMarsh, MinWidthStep, MinWidthTopStep
-)
+from .models import (Stair, Turn, Fence, TrackSupport, Material, Tint,
+                     Height, WidthMarsh, MinWidthStep, MinWidthTopStep)
 
 
 class SliderInline(admin.TabularInline):
