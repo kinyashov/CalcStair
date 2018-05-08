@@ -5,11 +5,11 @@ from .fields import SliderField
 
 class Stair(models.Model):
     title = models.CharField('Название лестницы', max_length=100)
-    type_turn = models.ManyToManyField('Turn', blank=True, verbose_name='Варианты поворота')
-    type_fence = models.ManyToManyField('Fence', blank=True, verbose_name='Варианты ограждений')
-    type_track_support = models.ManyToManyField('TrackSupport', blank=True, verbose_name='Варианты пристенного профиля')
-    material_stair = models.ManyToManyField('Material', blank=True, verbose_name='Доступные материалы')
-    tint = models.ManyToManyField('Tint', blank=True, verbose_name='Варианты отделки')
+    turns = models.ManyToManyField('Turn', blank=True, verbose_name='Варианты поворота')
+    fences = models.ManyToManyField('Fence', blank=True, verbose_name='Варианты ограждений')
+    track_supports = models.ManyToManyField('TrackSupport', blank=True, verbose_name='Варианты пристенного профиля')
+    materials = models.ManyToManyField('Material', blank=True, verbose_name='Доступные материалы')
+    tints = models.ManyToManyField('Tint', blank=True, verbose_name='Варианты отделки')
 
     class Meta:
         verbose_name = 'Лестница'
@@ -130,6 +130,7 @@ class Tint(models.Model):
 # without this admin-site don't save unchanged inline-object
 def create_ranges(sender, instance, created, **kwargs):
         if created:
+            # TODO: сделать цикл, который бы сам подхватывал все ranges
             Height.objects.create(stair=instance)
             WidthMarsh.objects.create(stair=instance)
             MinWidthStep.objects.create(stair=instance)
