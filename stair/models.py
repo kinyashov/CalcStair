@@ -22,8 +22,9 @@ class Stair(models.Model):
 class Range(models.Model):
 
     # класс-родитель для всех полей с диапазонами,
-    # для создания диапазона достаточно отнаследоваться от этого класса
-    # и создать в admin.py форму для модели, указав родителем класс SliderInline
+    # для создания диапазона надо отнаследоваться от этого класса,
+    # создать в admin.py форму для модели, указав родителем класс SliderInline
+    # и добавить объект в функцию create_ranges
     min = models.PositiveIntegerField(default=0, verbose_name='минимальное значение')
     slider = SliderField(verbose_name='')
     max = models.PositiveIntegerField(default=10000, verbose_name='максимальное значение')
@@ -123,3 +124,17 @@ class Tint(models.Model):
     class Meta:
         verbose_name = 'Окраска/тонировка'
         verbose_name_plural = 'Окраска/тонировка'
+
+
+# solution for inline-object in admin-site
+# without this admin-site don't save unchanged inline-object
+def create_ranges(sender, instance, created, **kwargs):
+        if created:
+            Height.objects.create(stair=instance)
+            WidthMarsh.objects.create(stair=instance)
+            MinWidthStep.objects.create(stair=instance)
+            MinWidthTopStep.objects.create(stair=instance)
+
+
+models.signals.post_save.connect(create_ranges, sender=Stair, weak=False,
+                                 dispatch_uid='models.create_renges')
