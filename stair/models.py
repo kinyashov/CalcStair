@@ -12,6 +12,8 @@ class Stair(models.Model):
     materials = models.ManyToManyField('Material', blank=True, verbose_name='Доступные материалы')
     tints = models.ManyToManyField('Tint', blank=True, verbose_name='Варианты отделки')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Лестница'
@@ -71,6 +73,9 @@ class MinWidthTopStep(Range):
 class Turn(models.Model):
     title = models.CharField('Название поворота', max_length=100)
     price = models.PositiveIntegerField('Цена поворота', default=0)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -83,6 +88,9 @@ class Turn(models.Model):
 class Fence(models.Model):
     title = models.CharField('Название ограждения/балюстрады', max_length=100)
     price = models.PositiveIntegerField('Цена ограждения/балюстрады', default=0)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -95,6 +103,9 @@ class Fence(models.Model):
 class TrackSupport(models.Model):
     title = models.CharField('Название пристенного профиля', max_length=100)
     price = models.PositiveIntegerField('Цена пристенного профиля', default=0)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -107,6 +118,9 @@ class TrackSupport(models.Model):
 class Material(models.Model):
     title = models.CharField('Название материала', max_length=100)
     price = models.PositiveIntegerField('Цена метериала', default=0)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
@@ -119,6 +133,9 @@ class Material(models.Model):
 class Tint(models.Model):
     title = models.CharField('Название отделки/тонировки', max_length=100)
     price = models.PositiveIntegerField('Цена отделки/тонировки', default=0)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
