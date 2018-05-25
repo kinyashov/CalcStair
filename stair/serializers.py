@@ -6,25 +6,25 @@ from .models import *
 class MaterialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Material
-        fields = '__all__'
+        fields = ('title', 'price')
 
 
 class FenceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fence
-        fields = '__all__'
+        fields = ('title', 'price')
 
 
 class TrackSupportSerializer(serializers.ModelSerializer):
     class Meta:
         model = TrackSupport
-        fields = '__all__'
+        fields = ('title', 'price')
 
 
 class TintSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tint
-        fields = '__all__'
+        fields = ('title', 'price')
 
 
 class HeightSerializer(serializers.ModelSerializer):
