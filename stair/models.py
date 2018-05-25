@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 from .fields import SliderField
 
@@ -10,6 +11,7 @@ class Stair(models.Model):
     track_supports = models.ManyToManyField('TrackSupport', blank=True, verbose_name='Варианты пристенного профиля')
     materials = models.ManyToManyField('Material', blank=True, verbose_name='Доступные материалы')
     tints = models.ManyToManyField('Tint', blank=True, verbose_name='Варианты отделки')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Лестница'
@@ -127,7 +129,7 @@ class Tint(models.Model):
 
 
 # solution for inline-object in admin-site
-# without this admin-site don't save unchanged inline-object
+# because admin-site don't save unchanged inline-object
 def create_ranges(sender, instance, created, **kwargs):
         if created:
             # TODO: сделать цикл, который бы сам подхватывал все ranges
